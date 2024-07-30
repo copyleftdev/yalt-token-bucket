@@ -1,0 +1,17 @@
+[package]
+name = "yalt"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+rusqlite = "0.26.0"
+structopt = "0.3"
+rand = "0.8"
+
+[dev-dependencies]
+tempfile = "3.3"
+
+[lib]
+name = "yalt"
+path = "src/lib.rs"
