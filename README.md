@@ -1,7 +1,3 @@
-Here's the updated README with additional details and the updated code snippet:
-
----
-
 # YALT - Yet Another Load Tester
 
 ## Introduction
