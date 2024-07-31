@@ -9,10 +9,10 @@ use std::path::Path;
 use structopt::StructOpt;
 
 pub struct TokenBucket {
-    rate: f64, // Tokens added per second
-    capacity: f64, // Maximum bucket capacity
-    tokens: f64, // Current number of tokens
-    last_update: Instant, // Use Instant for more precise time measurement
+    rate: f64,
+    capacity: f64,
+    tokens: f64, 
+    last_update: Instant,
 }
 
 impl TokenBucket {
