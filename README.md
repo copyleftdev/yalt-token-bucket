@@ -1,4 +1,4 @@
-Certainly! Here's the updated README that includes details on certain NIC chipsets and their limitations:
+Here's the updated README with additional details and the updated code snippet:
 
 ---
 
@@ -32,6 +32,20 @@ yalt --ips 127.0.0.1:12345:50,127.0.0.1:12346:50 --rate 200 --duration 30 --payl
 ```
 
 This command will send 200 requests per second for 30 seconds, splitting the traffic evenly between the two specified IP addresses.
+
+## Usage Patterns
+
+YALT can handle both single IP and multi-host setups with bias. Below are examples of usage patterns:
+
+### Multiple IPs with Bias
+
+```sh
+yalt --ips 127.0.0.1:12345:50,127.0.0.1:12346:50 --rate 200 --duration 30 --payload "Test payload"
+```
+```sh
+yalt --ips 127.0.0.1:12345:100,127.0.0.1:12346:0 --rate 200 --duration 30 --payload "Test payload"
+```
+
 
 ## Limitations
 
