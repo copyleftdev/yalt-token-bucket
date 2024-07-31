@@ -11,7 +11,7 @@ use structopt::StructOpt;
 pub struct TokenBucket {
     rate: f64,
     capacity: f64,
-    tokens: f64, 
+    tokens: f64,
     last_update: Instant,
 }
 
@@ -46,20 +46,26 @@ impl TokenBucket {
 
 #[derive(StructOpt, Debug)]
 pub struct Opt {
-    /// IP addresses to send payloads to with biases, e.g. "127.0.0.1:12345:50"
-    pub ips: Vec<String>,
-
     /// Requests per second
+    #[structopt(short, long)]
     pub rate: f64,
 
     /// Duration in seconds
+    #[structopt(short, long)]
     pub duration: u64,
 
     /// Payload to send
+    #[structopt(short, long)]
     pub payload: String,
+
+    /// IP addresses to send payloads to with biases, e.g., "127.0.0.1:12345:50"
+    #[structopt(short, long, use_delimiter = true)]
+    pub ips: Vec<String>,
 }
 
 pub async fn run_yalt(opt: Opt, db_path: &Path) -> Result<(), Box<dyn std::error::Error>> {
+    println!("Parsed IPs: {:?}", opt.ips);
+
     let bucket = Arc::new(Mutex::new(TokenBucket::new(opt.rate, opt.rate)));
     let start_time = Instant::now();
     let mut sent_requests = 0;
